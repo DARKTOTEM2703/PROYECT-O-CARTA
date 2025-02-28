@@ -17,7 +17,7 @@
    ```
 2. Navega al directorio del proyecto.
    ```bash
-   cd proyecto-carta-animada
+  cd PROYECT-O-CARTA
    ```
 3. Abre el archivo `index.html` en tu navegador web.
 
