@@ -1,0 +1,252 @@
+body {
+    background: linear-gradient(135deg, #2e1a47, #1e1131);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    color: #b89ee6;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.envelope-wrapper {
+    height: 480px;
+    margin-bottom: 20px;
+    perspective: 1000px;
+}
+
+#envelope {
+    margin: 50px auto 20px;
+    position: relative;
+    width: 720px;
+    height: 480px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #4a306d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+#envelope:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7);
+}
+
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.flap {
+    border-left: 360px solid transparent;
+    border-right: 360px solid transparent;
+    border-bottom: 220px solid transparent;
+    border-top: 241px solid #604396;
+    transform-origin: top;
+    pointer-events: none;
+    transition: transform 0.6s ease;
+}
+
+.pocket {
+    border-left: 360px solid #4a306d;
+    border-right: 360px solid #4a306d;
+    border-bottom: 240px solid #2e1a47;
+    border-top: 240px solid transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.letter {
+    position: relative;
+    background-color: #4a306d;
+    width: 80%;
+    margin: 0 auto;
+    height: 175px;
+    top: 10%;
+    border-radius: 6px;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    padding: 20px;
+    color: #e0d8f3;
+    transition: transform 0.6s ease;
+}
+
+.letter:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 25%, rgba(96, 67, 150, 0.7) 55%, #604396 100%);
+    border-radius: 6px;
+}
+
+.message {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.close .flap {
+    transform: rotateX(0deg);
+    z-index: 5;
+}
+
+.close .letter {
+    transform: translateY(0px);
+    z-index: 1;
+}
+
+.open .letter {
+    transform: translateY(-80px);
+    z-index: 2;
+}
+
+.hearts {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.heart {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    pointer-events: none;
+    animation: heartFloat 6s infinite;
+}
+
+.heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    left: 60px;
+    top: 0;
+    width: 60px;
+    height: 90px;
+    background: #2e1a47;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    pointer-events: none;
+}
+
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.close .heart {
+    opacity: 0;
+    animation: none;
+}
+
+.a1 {
+    left: 20%;
+    transform: scale(0.6);
+    opacity: 1;
+    animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+}
+
+.a2 {
+    left: 55%;
+    transform: scale(1);
+    opacity: 1;
+    animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+}
+
+.a3 {
+    left: 10%;
+    transform: scale(0.8);
+    opacity: 1;
+    animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+}
+.a4 {
+    left: 80%;
+    transform: scale(0.7);
+    opacity: 1;
+    animation: slideUp 6s linear 1, sideSway 3s ease-in-out 4 alternate;
+}
+
+@keyframes slideUp {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -600px;
+    }
+}
+
+@keyframes sideSway {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    #envelope {
+        width: 100%;
+        height: auto;
+        margin: 30px auto;
+    }
+
+    .letter {
+        width: 90%;
+        height: auto;
+        font-size: 14px;
+    }
+
+    .message {
+        font-size: 12px;
+    }
+}
+
+.image-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#rotating-image {
+    width: 100px;
+    height: 100px;
+}
