@@ -13,7 +13,7 @@
 
 1. Clona este repositorio en tu máquina local.
    ```bash
-   git clone https://github.com/tu-usuario/proyecto-carta-animada.git
+   git clone https://github.com/DARKTOTEM2703/PROYECT-O-CARTA.git
    ```
 2. Navega al directorio del proyecto.
    ```bash
